@@ -1,0 +1,31 @@
+Balaci Alexandra-Daniela, 323CD
+
+Cerinta temei este realizata printr-o serie de conditii "if" menite sa determine intai parametrii input-ului oferit
+si crearea structurii din clasa Main. Mai exact, natura actiunii (daca este comanda, query sau recomandare),
+tipul acesteia (view, rating etc), obiectul actiunii (users, actors etc), si apoi, daca exista, alte detalii precum
+subscription type sau object type (shows, movies).
+
+Clasele auxiliare au rolul fie de clase de utilitate in cadrul query-urilor (SortMap, CheckForYear, SearchList) si sunt
+apelate cand este nevoie de ele, fie pentru a putea indexa si contoriza actiunile realizate entitatilor
+(ShowRatings, MovieRating, sau User) si sunt apelate in momentul in care se realizeaza actiuni ce impliica una din
+entitati.
+
+Se parcurge intai un for ce parcurge lista de actiuni oferite in input.
+Primul if verifica daca tipul actiunii este de tip command. Daca este indeplinit, se verifica, pe rand, in care situatie
+de comanda ne aflam si se executa pasii necesari realizarii acesteia. De mentionat aici sunt listele usersRating si
+totalFavourites in care se adauga, de fiecare data cand este executata una din comenzile Rating sau Favourite, numele
+utilizatorului care a dat rating-ul, respectiv titlul video-ului care a fost adaugat la favorite. Scopul acestor liste
+este de a ajuta in cadrul query-urilor de users sau favourite pentru a putea calcula rapid cate rating-uri a dat un user
+sau ce filme au fost adaugate la favorite.
+
+Se continua apoi cu conditiile pentru query sau recommendations si se procedeaza in mod asemanator. Modul general de
+rezolvare a fost de a crea o lista, sau un map, dupa caz, de obiecte care indeplinesc actiunea solictata (users, actors,
+sau videos) si corespund cerintelor, de a se sorta dupa ordinea ceruta in input si afisa.
+Unde nu a fost posibila realzarea listei/mapului de la bun inceput cu filtrele cerute, s-a creat o lista/ map cu toate
+obiectele de un tip din database (spre ex videos) si apoi s-au eliminat cele care nu corespund cerintelor.
+In ambele situatii au fost create instante ale claselor Video (pentru adaugarea / eliminarea obiectelor pe baza filtrelor)
+si sortMap ( pentru ordonarea map-ului).
+Unde s-a solicitat sa existe anumite genuri/cuvinte/awards din input s-au apelat, de regula, metodele de numarare a
+instantelor din clasele searchList (daca am cautat cu o lista de cuvinte intr-o alta lista), sau wordCounter (daca a
+trebuit sa cautam intr-un string), pentru a verifica daca numarul total de awards/ words/ etc corespunde cu numarul
+gasit pentru fiecare actor/ film/ etc.
